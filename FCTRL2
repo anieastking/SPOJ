@@ -1,0 +1,53 @@
+
+
+#include<iostream>
+using namespace std;
+void num(int arr[],int& m,int i)
+{
+	int temp=0;
+	for(int j=0;j<m;j++)
+	{
+		int x=(arr[j]*i)+temp;
+		if(x>9)
+		{
+			arr[j]=x%10;
+			temp=x/10;
+		}
+		else
+		{
+			arr[j]=x;
+			temp=0;
+		}
+	}
+	while(temp>0) 
+             { 
+               arr[m]=temp%10;
+               temp = temp/10;
+               m++; 
+             }
+}
+int main()
+{
+	long long int t;
+	cin>>t;
+	int n;
+	while(t--)
+	{
+		int arr[300];
+		cin>>n;
+		int temp=0;int m;
+		for(int i=0;i<=n;i++)
+		{
+			if(i==1 || i==0)
+			{
+				arr[0]=1;m=1;
+				continue;
+			}
+			num(arr,m,i);	
+		}
+		for(int i=m-1;i>=0;i--)
+		cout<<arr[i];
+		cout<<endl;
+	}
+	return 0;
+}
