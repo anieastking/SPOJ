@@ -1,0 +1,48 @@
+#include<iostream>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+void sieve(int m,int n)
+{
+int arr[n+1];
+	if(n>=2)
+	{
+		memset(arr, 0, sizeof(arr));
+		for(int i=2;i<=n;i++)
+		{
+			if(arr[i]==0)
+			{
+				long long int p=2;
+				long long int k=i*p;
+				while(k<=n)
+				{
+					p++;
+					arr[k]=1;
+					k=i*p;
+				}
+				
+			}
+		}
+	}
+	for(int j=m;j<=n;j++)
+	{
+		if(arr[j]==0)
+		cout<<j<<endl;
+	}
+	
+}
+int main()
+{
+	long long int t,p,q;
+	cin>>t;
+	while(t--)
+	{
+		
+		cin>>p>>q;
+		
+		sieve(p,q);
+	
+		cout<<endl;
+	}
+	return 0;
+}
